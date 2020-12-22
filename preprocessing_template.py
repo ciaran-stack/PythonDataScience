@@ -9,9 +9,11 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 
-dataset = pd.read_csv('Data.csv') # turn data.csv into dataframe
-x = dataset.iloc[:, :-1].values # get the values of the columns up to not including the final column
-y = dataset.iloc[:, -1].values # get the values of the last column
+dataset = pd.read_csv('Data.csv') # turn data.csv into dataframe using pd.read_csv function
+
+
+x = dataset.iloc[:, :-1].values # get all the values of the columns [:, up to not including the final column ,:-1]
+y = dataset.iloc[:, -1].values # get the values [: of the last column ,-1]
 
 # turn each value into np.nan and find mean for each column
 imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
@@ -38,7 +40,10 @@ sc = StandardScaler()
 x_train[:, 3:] = sc.fit_transform(x_train[:, 3:])
 x_test[:, 3:] = sc.transform(x_test[:, 3:])
 
-print(x_train)
-print(x_test)
+print(x)
+print(y)
+
+# print(x_train)
+# print(x_test)
 
 
