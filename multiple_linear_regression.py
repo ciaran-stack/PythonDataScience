@@ -9,6 +9,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
 
 # Data import and columns
 dataset = pd.read_csv("50_Startups.csv")
@@ -28,5 +29,9 @@ regressor.fit(X_train, y_train)
 
 # Predicting test set results
 y_pred = regressor.predict(x_test)
-np.set_printoptions(precision=2)
+np.set_printoptions(precision=2) # used for precision (number of decimal places)
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test), 1)), axis=1))
+
+# **************************************** Model Evaluation *******************************************************
+score = r2_score(y_test, y_pred)
+print(score)
