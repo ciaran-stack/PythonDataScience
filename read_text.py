@@ -1,9 +1,9 @@
 
 # open connection to the file company.txt from edgar index
-sec_file = open(r'company.txt')
+sec_file = open(r'Udemy/company.txt')
 
 # create new file and write each line to file
-cik_file = open("cik.txt", "w+")
+cik_file = open("Udemy/cik.txt", "w+")
 
 
 # for loop to process each line in file

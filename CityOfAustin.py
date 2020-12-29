@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 # Data Processing
 df = pd.read_csv('2015-08-15_Austin_Sustainability_Indicators.csv') # data frame
@@ -20,11 +21,15 @@ bike_mi_df = bike_mi_df.sort_values(by='Date')
 bike_mi_df['Date'] = pd.DatetimeIndex(bike_mi_df['Date']).year
 bike_mi_df['Date'] = bike_mi_df['Date']
 
+years = mdates.YearLocator()
+
+
 x = bike_mi_df.iloc[:, 0].values
 y = bike_mi_df.iloc[:, 2].values
 
 # Visualization of New Miles overtime
-plt.bar(x, y, color='blue')
+plt.xticks(x)
+plt.scatter(x, y, color='blue')
 plt.xlabel('Year')
 plt.ylabel('Miles')
 plt.title('City of Austin: New Bike Miles per Year')
